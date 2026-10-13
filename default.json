@@ -39,6 +39,11 @@
       "description": "First-party Go modules skip the hold",
       "matchPackageNames": ["github.com/imagegenius/**"],
       "minimumReleaseAge": "0 days"
+    },
+    {
+      "matchManagers": ["mise"],
+      "matchUpdateTypes": ["lockFileMaintenance"],
+      "minimumReleaseAge": "0 days"
     }
   ],
   "ignorePaths": [
