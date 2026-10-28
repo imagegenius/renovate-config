@@ -46,7 +46,7 @@ jobs:
         run: mise run lint
 
       - name: Validate Renovate presets
-        run: mise run validate default.json ./*.json5 .renovaterc.json5
+        run: mise run validate default.json .renovaterc.json5
 
   workflow-lint:
     if: >-
