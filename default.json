@@ -1,61 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended",
-    "docker:enableMajor",
-    "helpers:pinGitHubActionDigestsToSemver",
-    "abandonments:recommended",
-    "./annotated.json5",
-    "./autoMerge.json5",
-    "./groups.json5",
-    "./labels.json5",
-    "./semanticCommits.json5",
-    "./sharedActions.json5",
-    ":automergePr",
-    ":configMigration",
-    ":dependencyDashboard",
-    ":disableRateLimiting"
-  ],
-  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
-  "minimumReleaseAgeBehaviour": "timestamp-optional",
-  "lockFileMaintenance": {
-    "enabled": true,
-    "schedule": ["before 6am on the first day of the month"],
-    "commitMessageExtra": "({{manager}})",
-    "additionalBranchPrefix": "{{manager}}-"
-  },
+  "extends": ["github>hydazz/renovate-config"],
   "packageRules": [
-    {
-      "description": "NPM Bump Range Strategy",
-      "matchManagers": ["npm"],
-      "rangeStrategy": "bump"
-    },
-    {
-      "description": "Hold package-registry updates (Go modules, npm, PyPI, crates) until they are 3 days old, the same window as the github-actions and mise groups",
-      "matchCategories": ["golang", "js", "python", "rust"],
-      "minimumReleaseAge": "3 days"
-    },
     {
       "description": "First-party Go modules skip the hold",
       "matchPackageNames": ["github.com/imagegenius/**"],
       "minimumReleaseAge": "0 days"
-    },
-    {
-      "matchManagers": ["mise"],
-      "matchUpdateTypes": ["lockFileMaintenance"],
-      "minimumReleaseAge": "0 days"
     }
-  ],
-  "ignorePaths": [
-    "**/node_modules/**",
-    "**/bower_components/**",
-    "**/vendor/**",
-    "**/examples/**",
-    "**/__tests__/**",
-    "**/test/**",
-    "**/tests/**",
-    "**/__fixtures__/**",
-    "**/.mise/locks/**"
-  ],
-  "timezone": "Australia/Melbourne"
+  ]
 }
