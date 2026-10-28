@@ -29,6 +29,7 @@ jobs:
       ${{ !(startsWith(github.head_ref, 'release-please--')
       && github.event.pull_request.head.repo.full_name == github.repository) }}
     runs-on: ubuntu-26.04
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -53,6 +54,7 @@ jobs:
       && github.event.pull_request.head.repo.full_name == github.repository) }}
     name: Workflow Lint
     runs-on: ubuntu-26.04
+    timeout-minutes: 15
     permissions:
       contents: read
     steps:
@@ -85,6 +87,7 @@ jobs:
       - validate
       - workflow-lint
     runs-on: ubuntu-26.04
+    timeout-minutes: 15
     permissions: {}
     steps:
       # cancelled counts as failed: !cancelled() above still runs this job when
